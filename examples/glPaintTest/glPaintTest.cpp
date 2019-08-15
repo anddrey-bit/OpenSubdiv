@@ -109,7 +109,7 @@ int g_running = 1,
     g_displayDisplacement = 0,
     g_mbutton[3] = {0, 0, 0};
 
-int g_brushSize = 100;
+float g_brushSize = 100.f;
 int g_frame = 0;
 
 GLuint g_ptexPages = 0,
@@ -964,7 +964,7 @@ callbackModel(int m) {
 static void
 callbackBrushSize(float value, int /* data */) {
 
-    g_brushSize = (int)value;
+    g_brushSize = value;
 }
 
 //------------------------------------------------------------------------------
@@ -988,7 +988,7 @@ initHUD() {
     g_hud.AddPullDownButton(shading_pulldown, "Shaded", 1, g_wire==1);
     g_hud.AddPullDownButton(shading_pulldown, "Wire+Shaded", 2, g_wire==2);
 
-    g_hud.AddSlider("Brush size", 10, 500, g_brushSize,
+    g_hud.AddSlider("Brush size", 10.f, 500.f, g_brushSize,
                      350, -60, 40, true, callbackBrushSize, 0);
 
     for (int i = 1; i < 11; ++i) {
